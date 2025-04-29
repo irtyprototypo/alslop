@@ -486,8 +486,8 @@ class Player extends Sprite{
                 texture = textureX;
             }
 
-            // fisheye fix that makes the walls crawl
-            // depth = Math.trunc(depth * Math.cos(this.angle - rayAngle));
+            // Apply fisheye correction
+            depth = depth * Math.cos(this.angle - rayAngle);
             rays[i] = {x: ((this.center.x - this.mapOffset.x)  + depth * curCos), y: ((this.center.y - this.mapOffset.y)  + depth *  curSin)}
 
             wallHeight = Math.floor(window.innerHeight*30 / (depth + .00001))
